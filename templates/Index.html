@@ -1,0 +1,93 @@
+<!-- templates/template.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+            grid-template-rows: 50px 1fr 50px;
+            grid-template-columns: 200px 1fr;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header, footer {
+            grid-area: header / span 2;
+            overflow: auto;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        sidebar {
+            grid-area: sidebar;
+            overflow: auto;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        main {
+            grid-area: main;
+            overflow: auto;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+    <title>{{ page_title }}</title>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>{{ header_title }}</h1>
+        <p>{{ header_content }}</p>
+        {% for image in header_images %}
+            <img src="{{ image }}" alt="Header Image">
+        {% endfor %}
+    </header>
+
+    <sidebar>
+        <h2>{{ sidebar_title }}</h2>
+        <p>{{ sidebar_content }}</p>
+        {% for image in sidebar_images %}
+            <img src="{{ image }}" alt="Sidebar Image">
+        {% endfor %}
+    </sidebar>
+
+    <main>
+        <h2>Main Content Section</h2>
+        <p>{{ main_content }}</p>
+        {% for image in main_images %}
+            <img src="{{ image }}" alt="Main Content Image">
+        {% endfor %}
+    </main>
+
+    <footer>
+        <h3>{{ footer_title }}</h3>
+        <p>{{ footer_content }}</p>
+        {% for image in footer_images %}
+            <img src="{{ image }}" alt="Footer Image">
+        {% endfor %}
+    </footer>
+</div>
+
+</body>
+</html>
